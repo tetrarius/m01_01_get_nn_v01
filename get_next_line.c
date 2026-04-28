@@ -39,7 +39,10 @@ static char	*read_to_stash(int fd, char *stash)
 
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
-		return (stash);
+	{
+		free(stash);
+		return (NULL);
+	}
 	bytes_read = 1;
 	while (!ft_strchr(stash, '\n') && bytes_read > 0)
 	{
